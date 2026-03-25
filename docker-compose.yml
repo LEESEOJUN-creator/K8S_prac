@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  ide:
+    build: .
+    container_name: dev-container
+    ports:
+      - "8080:8080"
+    environment:
+      - PASSWORD=1234
+    volumes:
+      - .:/workspace
