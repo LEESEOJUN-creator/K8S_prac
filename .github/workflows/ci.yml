@@ -2,7 +2,7 @@ name: CI Pipeline
 
 on:
   push:
-    branches: [ main ]    # main 브랜치 push 시 실행
+    branches: [ main ]
 
 jobs:
   build-and-push:
@@ -35,3 +35,16 @@ jobs:
         ${{ secrets.DOCKER_USERNAME }}/my-app:latest
         docker push \
         ${{ secrets.DOCKER_USERNAME }}/my-app:latest
+
+    - name: deployment.yaml 이미지 태그 업데이트
+      run: |
+        sed -i "s|${{ secrets.DOCKER_USERNAME }}/my-app:.*|${{ secrets.DOCKER_USERNAME }}/my-app:${{ github.sha }}|" \
+        k8s/deployment.yaml
+
+    - name: 변경사항 GitHub에 push
+      run: |
+        git config user.email "action@github.com"
+        git config user.name "GitHub Actions"
+        git add k8s/deployment.yaml
+        git commit -m "이미지 태그 업데이트: ${{ github.sha }}"
+        git push
