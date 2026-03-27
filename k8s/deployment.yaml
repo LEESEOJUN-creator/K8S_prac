@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: my-app
-        image: seojunny/my-app:8b879764b780ee462c9a218d46c839a02d52ab5c
+        image: seojunny/my-app:ea4b6ab0678a790d73cfddacd5c5b5a5dbf03192
         ports:
         - containerPort: 3000
 ---
