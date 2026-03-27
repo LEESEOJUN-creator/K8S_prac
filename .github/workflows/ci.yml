@@ -4,6 +4,9 @@ on:
   push:
     branches: [ main ]
 
+permissions:
+  contents: write
+
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
@@ -46,5 +49,5 @@ jobs:
         git config user.email "action@github.com"
         git config user.name "GitHub Actions"
         git add k8s/deployment.yaml
-        git commit -m "이미지 태그 업데이트: ${{ github.sha }}"
+        git commit -m "이미지 태그 업데이트: ${{ github.sha }} [skip ci]"
         git push
