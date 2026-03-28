@@ -54,3 +54,13 @@ volume.yaml     — PersistentVolume (1Gi, hostPath: /data/my-app)
 ```
 
 The `k8s/deployment.yaml` and `volume.yaml` are independent — `volume.yaml` demonstrates PV/PVC usage with a separate deployment (`my-app-volume`).
+
+## 실습 현황
+- kind 클러스터 로컬 운영 중
+- GitHub Actions CI 구성 완료
+- ArgoCD CD 구성 완료
+- Docker Hub: seojunny
+- GitHub: LEESEOJUN-creator/K8S_prac
+- Ingress: nginx Controller 설치됨
+- HPA: cpu 50% 기준 min1 max5
+- ConfigMap/Secret 적용됨
