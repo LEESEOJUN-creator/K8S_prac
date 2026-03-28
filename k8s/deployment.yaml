@@ -14,9 +14,32 @@ spec:
     spec:
       containers:
       - name: my-app
-        image: seojunny/my-app:ad7d7b9e9d6f98f6a39a94d1d5b52db0444cd283
+        image: seojunny/my-app:5a845bc5982a266658adbe42b018efae3091dfda
         ports:
         - containerPort: 3000
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 500m
+            memory: 256Mi
+        env:
+        - name: APP_NAME 
+          valueFrom:
+            configMapKeyRef:
+              name: my-config
+              key: APP_NAME
+        - name: PORT
+          valueFrom:
+            configMapKeyRef:
+              name: my-config
+              key: PORT
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: my-secret
+              key: DB_PASSWORD
 ---
 apiVersion: v1
 kind: Service
