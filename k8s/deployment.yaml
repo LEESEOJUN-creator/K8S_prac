@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: my-app
-        image: seojunny/my-app:2583852a5cd4688f5b574809a4e5c84d5439fbd5
+        image: seojunny/my-app:409a8aaae184928c7534e6a011a875c8312b9e21
         ports:
         - containerPort: 3000
         resources:
