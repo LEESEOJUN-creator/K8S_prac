@@ -64,3 +64,7 @@ The `k8s/deployment.yaml` and `volume.yaml` are independent — `volume.yaml` de
 - Ingress: nginx Controller 설치됨
 - HPA: cpu 50% 기준 min1 max5
 - ConfigMap/Secret 적용됨
+
+## 규칙
+- secrets는 절대 코드에 하드코딩 금지
+- k8s/ 폴더의 yaml 파일 수정 시 항상 확인 요청
