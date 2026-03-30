@@ -1,7 +1,26 @@
 const http = require("http");
+const client = require("prom-client");
 
-const server = http.createServer((req, res) => {
-  console.log(`${new Date().toISOString()} ${req.method} ${req.url}`);
+// 기본 메트릭 수집 (CPU, 메모리 등)
+client.collectDefaultMetrics();
+
+// 요청 횟수 카운터
+const httpRequestCounter = new client.Counter({
+  name: "http_requests_total",
+  help: "Total number of HTTP requests",
+  labelNames: ["method", "path", "status"],
+});
+
+const server = http.createServer(async (req, res) => {
+  if (req.url === "/metrics") {
+    res.writeHead(200, { "Content-Type": client.register.contentType });
+    res.end(await client.register.metrics());
+    return;
+  }
+
+  httpRequestCounter.inc({ method: req.method, path: req.url, status: 200 });
+  console.log(`${new Date().toISOString()} ${req.method} ${req.url} 200`);
+
   res.writeHead(200, { "Content-Type": "text/plain" });
   res.end("Hello Kubernetes!");
 });

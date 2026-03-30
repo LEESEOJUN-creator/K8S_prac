@@ -1,0 +1,24 @@
+{
+  "name": "k8s_prac",
+  "version": "1.0.0",
+  "description": "Kubernetes 실습 프로젝트. 로컬 환경에서 K8s 클러스터를 구성하고 GitHub Actions + ArgoCD로 CI/CD 파이프라인을 구축했다.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LEESEOJUN-creator/K8S_prac.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/LEESEOJUN-creator/K8S_prac/issues"
+  },
+  "homepage": "https://github.com/LEESEOJUN-creator/K8S_prac#readme",
+  "dependencies": {
+    "prom-client": "^15.1.3"
+  }
+}
