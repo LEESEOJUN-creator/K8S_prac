@@ -16,4 +16,3 @@ spec:
             name: my-app
             port:
               number: 80
-     
