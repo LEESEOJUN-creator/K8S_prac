@@ -1,7 +1,7 @@
 const http = require("http");
 const client = require("prom-client");
 
-// 기본 메트릭 수집 (CPU, 메모리 등)
+// 기본 메트릭 수집 
 client.collectDefaultMetrics();
 
 // 요청 횟수 카운터
@@ -25,6 +25,7 @@ const server = http.createServer(async (req, res) => {
   res.end("Hello Kubernetes!");
 });
 
-server.listen(3000, () => {
-  console.log("Server running on port 3000");
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });

@@ -5,8 +5,8 @@ services:
     build: .
     container_name: dev-container
     ports:
-      - "8080:8080"
+      - "8080:3000"
     environment:
       - PASSWORD=1234
     volumes:
-      - .:/workspace
+      - .:/app

@@ -24,7 +24,7 @@ spec:
             cpu: 500m
             memory: 256Mi
         env:
-        - name: APP_NAME 
+        - name: APP_NAME
           valueFrom:
             configMapKeyRef:
               name: my-config
@@ -51,5 +51,4 @@ spec:
   - name: http
     port: 80
     targetPort: 3000
-    nodePort: 30000
-  type: NodePort
+  type: ClusterIP
